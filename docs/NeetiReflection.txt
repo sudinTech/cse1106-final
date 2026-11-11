@@ -1,0 +1,5 @@
+1. My primary contribution to the project was working on the logic of the code and making sure the LED circuits are working properly. I helped Sudin with circuit creation and my main idea was to add the if-else statement we missed in our original file where as instructed users could set their own range for the temperature values.  
+2. The most challenging technical problem we encountered was with correct code but incorrect output given by the system and incorrect float value with "nano" while we later figured out there was nothing wrong with the code but it happened due to the software.  
+3. We used LED lights for testing if our entered values are working according to desired ranges. It lights up if the temp is outside the range and stores it as WARNING and if not the LED stays off with status being NORMAL.  
+4. The github lab we did was important skill CSE 1106 taught was useful  
+5. If we had more time, we would add dynamic memory to allow more values and temperatures.  
