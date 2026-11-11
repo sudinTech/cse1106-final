@@ -1,0 +1,8 @@
+//Sudin Gautam
+//1002400019
+
+1. I contributed to setup the repo and build the testing logic for the temperatures.
+2. It was with debugging the code. Once it gave me huge numbers and nan for temperatures stored in files. But we solved it by thoroughly debugging the code.
+3. We used LED lights to verify the results and debugged line by line and used online resources to figure out the problems.
+4. Using github, and setting up rasperry pi.
+5. We would add dynamic memory to store a lot more values for temperatures and test them.
