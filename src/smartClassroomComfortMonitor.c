@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <pigpio.h>
+#include <unistd.h>
 
 #define LED_PIN 17
 
@@ -14,15 +15,30 @@ int main()
     gpioWrite(LED_PIN, 0);
 
     double temperatures[3];
+    double tempLowerBound, tempUpperBound;
 
     printf("=== Smart Classroom Comfort Monitor ===\n");
+    
+    char defVal;
+    printf("Do you want to use the default Value (y/n)");
+    scanf("%c", &defVal);
+    if ( defVal == 'n'){
+		    
+	printf("Enter lower bound temperature in Fahrenheit: ");
+        scanf("%lf", &tempLowerBound);
+        
+    printf("Enter upper bound temperature in Fahrenheit: ");
+        scanf("%lf", &tempUpperBound);
+	} else{
+		tempLowerBound = 68;
+		tempUpperBound = 76;}
 
     for (int i = 0; i < 3; i++)
     {
-        printf("Enter temperature %d in Fahrenheit: ", i + 1);
+        printf("Enter temperature %d in Fahrenheit: ", i+1);
         scanf("%lf", &temperatures[i]);
 
-        if (temperatures[i] >= 68.0 && temperatures[i] <= 76.0)
+        if (temperatures[i] >= tempLowerBound && temperatures[i] <= tempUpperBound)
         {
             gpioWrite(LED_PIN, 0);
             printf("Status: NORMAL | LED: OFF\n");
@@ -34,7 +50,7 @@ int main()
         }
     }
 
-    gpioWrite(LED_PIN, 0);
+    
 
     double sum = 0;
     for (int i = 0; i < 3; i++)
@@ -50,7 +66,7 @@ int main()
 
     for (int i = 0; i < 3; i++)
     {
-        if (temperatures[i] >= 68.0 && temperatures[i] <= 76.0)
+        if (temperatures[i] >= tempLowerBound && temperatures[i] <= tempUpperBound)
         {
             fprintf(f, "%.1f°F\tNORMAL\tOFF\n", temperatures[i]);
         }
@@ -63,6 +79,8 @@ int main()
     fprintf(f, "\nAverage Temperature: %.2f°F\n", avg);
     fclose(f);
 
+	sleep(5);
+	gpioWrite(LED_PIN,0);
     gpioTerminate();
     return 0;
 }
