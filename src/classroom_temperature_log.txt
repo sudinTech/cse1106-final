@@ -1,0 +1,6 @@
+Temperature System Status Warning LED
+70.0°F	NORMAL	OFF
+60.0°F	WARNING	ON
+90.0°F	WARNING	ON
+
+Average Temperature: 73.33°F
